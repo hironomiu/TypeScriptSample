@@ -17,6 +17,7 @@ $ npm -v
 $ npm install typescript
 $ npm i express @types/express
 $ npm i ts-node ts-node-dev
+$ npm i body-parser
 ```
 
 ## サーバ
