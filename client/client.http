@@ -2,7 +2,7 @@ POST  http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
+    "id":"2",
     "name":"二郎",
-    "category":"public",
-    "done":false
+    "age":"20"
 }
