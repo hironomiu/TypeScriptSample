@@ -38,6 +38,9 @@ $ npm run watch
 $ npm run build
 ```
 
+## リクエスト
+`client/`はVSCodeの[REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)のリクエストファイル用のディレクトリ
+
 ## テスト環境
 
 ```
