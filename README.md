@@ -13,6 +13,9 @@ $ npm -v
 
 ## set up
 
+DB(MySQL)は[mysql2](https://github.com/types/mysql2)を利用  
+コントローラルーティングは[routing-controllers](https://github.com/typestack/routing-controllers)を利用
+
 ```
 $ make setup
 ```
