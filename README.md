@@ -14,17 +14,14 @@ $ npm -v
 ## set up
 
 ```
-$ npm install typescript
-$ npm i express @types/express
-$ npm i ts-node ts-node-dev
-$ npm i body-parser
+$ make setup
 ```
 
 ## サーバ
 
 start
 ```
-$ npm run server
+$ make server
 ```
 
 watch & auto reload
