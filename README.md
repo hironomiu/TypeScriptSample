@@ -1,7 +1,7 @@
 # TypeScript Sample
 
 ## 環境
-
+nodejs、npmがインストールされてること
 ```
 $ node -v
 v12.14.1
@@ -9,10 +9,11 @@ $ npm -v
 6.13.6
 ```
 
-[VSCode](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)
+開発は[REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)などを利用するため[VSCode](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)を使用
+
 
 ## set up
-
+アプリケーションフレームワークは[Express](https://expressjs.com/)を利用  
 DB(MySQL)は[mysql2](https://github.com/types/mysql2)を利用  
 コントローラルーティングは[routing-controllers](https://github.com/typestack/routing-controllers)を利用
 
