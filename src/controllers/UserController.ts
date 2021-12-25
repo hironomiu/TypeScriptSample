@@ -1,13 +1,22 @@
-import { JsonController, Param, Body, Get, Post, Put, Delete } from 'routing-controllers'
+import {
+  JsonController,
+  Param,
+  Body,
+  Get,
+  Post,
+  Put,
+  Delete,
+} from 'routing-controllers'
 
-type User = { id:number; name:string; age:number }
+type User = { id: number; name: string; age: number }
+
 const users = [
-    {
-        id:1,
-        name:"太郎",
-        age:20,
-    },
-];
+  {
+    id: 1,
+    name: '太郎',
+    age: 20,
+  },
+]
 
 @JsonController('/users')
 export class UserController {
@@ -24,7 +33,7 @@ export class UserController {
   @Post('/')
   post(@Body() user: User) {
     users.push(user)
-    return 'ok'
+    return 'user added'
   }
 
   @Put('/:id')
