@@ -7,8 +7,8 @@ npm install -D typescript @types/node ts-node
 ```
 
 ```
-npm install express mysql2 routing-controllers
-npm install -D @types/express types/mysql2#
+npm install express mysql2 routing-controllers cors
+npm install -D @types/express types/mysql2# @types/cors
 ```
 
 JEST
