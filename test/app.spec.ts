@@ -7,7 +7,7 @@ describe('Express server', () => {
       .get('/')
       .then((response) => {
         expect(response.status).toBe(200)
-        expect(response.text).toEqual('"こんにちは！世界！"')
+        expect(response.text).toEqual('{"message":"こんにちは！世界！"}')
         done()
       })
   })

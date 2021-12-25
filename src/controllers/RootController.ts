@@ -12,6 +12,6 @@ import {
 export class RootController {
   @Get('/')
   getAll() {
-    return 'こんにちは！世界！'
+    return { message: 'こんにちは！世界！' }
   }
 }
