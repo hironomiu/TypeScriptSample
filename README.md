@@ -17,6 +17,9 @@ JEST
 npm install -D jest ts-jest @types/jest supertest @types/supertest
 ```
 
+REST Client
+`./client/client.http`内、対象の行で CMD + ALT + R で実行
+
 ## 環境
 
 nodejs、npm がインストールされてること
