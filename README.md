@@ -17,12 +17,24 @@ JEST
 npm install -D jest ts-jest @types/jest supertest @types/supertest
 ```
 
-REST Client
-`./client/client.http`内、対象の行で CMD + ALT + R で実行
-
 Tasting
 
 `--coverage`でカバレッジを取得
+
+REST Client
+`./client/client.http`内、対象の行で CMD + ALT + R で実行
+
+curl(cors OK)
+
+```
+curl -H "Origin: http://localhost:3000" --head http://localhost:5050
+```
+
+curl(cors NG)
+
+```
+curl -H "Origin: http://localhost:4000" --head http://localhost:5050
+```
 
 ## 環境
 
