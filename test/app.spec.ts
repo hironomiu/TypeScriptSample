@@ -11,6 +11,7 @@ describe('Express server', () => {
         done()
       })
   })
+
   it('should response the GET method /users ', (done: jest.DoneCallback) => {
     supertest(app)
       .get('/users')
@@ -20,6 +21,13 @@ describe('Express server', () => {
         done()
       })
   })
+
+  it('should response the GET method /users/1', async () => {
+    const response = await supertest(app).get('/users/1')
+    expect(response.status).toBe(200)
+    expect(response.text).toBe('{"id":1,"name":"太郎","age":20}')
+  })
+
   it('should response the POST method /users ', (done: jest.DoneCallback) => {
     const user = {
       category: 'Private',
@@ -35,6 +43,7 @@ describe('Express server', () => {
         done()
       })
   })
+
   it('should response the PUT method /users/1 ', async () => {
     const user = {
       category: 'Private',
@@ -45,6 +54,7 @@ describe('Express server', () => {
     expect(response.status).toBe(200)
     expect(response.text).toBe('"user modifyed"')
   })
+
   it('should response the DELETE method /users/1', async () => {
     const response = await supertest(app).delete('/users/1')
     expect(response.status).toBe(200)

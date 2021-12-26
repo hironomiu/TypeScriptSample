@@ -27,7 +27,8 @@ export class UserController {
 
   @Get('/:id')
   getOne(@Param('id') id: number) {
-    return users[id]
+    const user = users.filter((user) => user.id === id)
+    return user[0]
   }
 
   @Post('/')
