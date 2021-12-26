@@ -35,4 +35,19 @@ describe('Express server', () => {
         done()
       })
   })
+  it('should response the PUT method /users/1 ', async () => {
+    const user = {
+      category: 'Private',
+      name: '花子',
+      done: false,
+    }
+    const response = await supertest(app).put('/users/1').send(user)
+    expect(response.status).toBe(200)
+    expect(response.text).toBe('"user modifyed"')
+  })
+  it('should response the DELETE method /users/1', async () => {
+    const response = await supertest(app).delete('/users/1')
+    expect(response.status).toBe(200)
+    expect(response.text).toBe('"user deleted"')
+  })
 })

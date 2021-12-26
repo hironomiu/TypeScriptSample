@@ -39,12 +39,12 @@ export class UserController {
   @Put('/:id')
   put(@Param('id') id: number, @Body() user: User) {
     users[id] = user
-    return 'ok'
+    return 'user modifyed'
   }
 
   @Delete('/:id')
   remove(@Param('id') id: number) {
     users.splice(id, 1)
-    return 'ok'
+    return 'user deleted'
   }
 }
