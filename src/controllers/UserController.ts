@@ -10,7 +10,7 @@ import {
 
 type User = { id: number; name: string; age: number }
 
-const users = [
+let users: Array<User> = [
   {
     id: 1,
     name: '太郎',
@@ -27,19 +27,20 @@ export class UserController {
 
   @Get('/:id')
   getOne(@Param('id') id: number) {
-    const user = users.filter((user) => user.id === id)
-    return user[0]
+    const index = users.findIndex((user) => user.id === id)
+    return users[index]
   }
 
   @Post('/')
   post(@Body() user: User) {
-    users.push(user)
+    users = [...users, user]
     return 'user added'
   }
 
   @Put('/:id')
   put(@Param('id') id: number, @Body() user: User) {
-    users[id] = user
+    const newUsers: Array<User> = users.filter((user) => user.id !== id)
+    users = [...newUsers, user]
     return 'user modifyed'
   }
 

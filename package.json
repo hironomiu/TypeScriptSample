@@ -1,9 +1,9 @@
 {
   "scripts": {
     "build": "tsc",
-    "server": "ts-node src/server.ts",
+    "serve": "ts-node src/server.ts",
     "watch": "ts-node-dev -- src/server.ts",
-    "test": "jest --forceExit --coverage --verbose",
+    "test": "jest --forceExit --detectOpenHandles --coverage --verbose",
     "watch-test": "npm run test -- --watchAll"
   },
   "devDependencies": {
