@@ -11,7 +11,16 @@ npm install express mysql2 routing-controllers cors
 npm install -D @types/express types/mysql2# @types/cors
 ```
 
-`.env`は`process.env.port`で利用
+```
+npm install dotenv
+```
+
+`.env`は`process.env.port`で利用(以下例)
+
+```
+PORT=5050
+ALLOWED_ORIGINS='http://localhost:3000 http://localhost:4000'
+```
 
 JEST
 

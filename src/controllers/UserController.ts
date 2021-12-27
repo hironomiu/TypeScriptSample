@@ -22,31 +22,33 @@ let users: Array<User> = [
 export class UserController {
   @Get('/')
   getAll() {
-    return users
+    return { message: 'success', users }
   }
 
   @Get('/:id')
   getOne(@Param('id') id: number) {
     const index = users.findIndex((user) => user.id === id)
-    return users[index]
+    return { message: 'success', user: users[index] }
   }
 
   @Post('/')
   post(@Body() user: User) {
     users = [...users, user]
-    return 'user added'
+    const id = users.findIndex((data) => (data.name = user.name))
+    return { message: 'success', id: id }
   }
 
   @Put('/:id')
   put(@Param('id') id: number, @Body() user: User) {
     const newUsers: Array<User> = users.filter((user) => user.id !== id)
     users = [...newUsers, user]
-    return 'user modifyed'
+    return { message: 'success', user: user }
   }
 
   @Delete('/:id')
   remove(@Param('id') id: number) {
-    users.splice(id, 1)
-    return 'user deleted'
+    const newUsers: Array<User> = users.filter((user) => user.id !== id)
+    users = [...newUsers]
+    return { message: 'success', id: id }
   }
 }
