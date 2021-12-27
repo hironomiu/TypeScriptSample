@@ -11,6 +11,8 @@ npm install express mysql2 routing-controllers cors
 npm install -D @types/express types/mysql2# @types/cors
 ```
 
+`.env`は`process.env.port`で利用
+
 JEST
 
 ```
@@ -22,7 +24,7 @@ Tasting
 `--coverage`でカバレッジを取得
 
 REST Client
-`./client/client.http`内、対象の行で CMD + ALT + R で実行
+`./client/client.http`内で CMD + ALT + R で実行
 
 curl(cors OK)
 

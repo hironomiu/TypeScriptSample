@@ -1,25 +1,19 @@
 import * as supertest from 'supertest'
 import { app } from '../src/app'
 
-describe('Express server', () => {
-  it('should response the GET method / ', (done: jest.DoneCallback) => {
-    supertest(app)
-      .get('/')
-      .then((response) => {
-        expect(response.status).toBe(200)
-        expect(response.text).toEqual('{"message":"こんにちは！世界！"}')
-        done()
-      })
+describe('Express server /', () => {
+  it('should response the GET method / ', async () => {
+    const response = await supertest(app).get('/')
+    expect(response.status).toBe(200)
+    expect(response.text).toEqual('{"message":"こんにちは！世界！"}')
   })
+})
 
-  it('should response the GET method /users ', (done: jest.DoneCallback) => {
-    supertest(app)
-      .get('/users')
-      .then((response) => {
-        expect(response.status).toBe(200)
-        expect(response.text).toBe('[{"id":1,"name":"太郎","age":20}]')
-        done()
-      })
+describe('Express server /users', () => {
+  it('should response the GET method /users ', async () => {
+    const response = await supertest(app).get('/users')
+    expect(response.status).toBe(200)
+    expect(response.text).toBe('[{"id":1,"name":"太郎","age":20}]')
   })
 
   it('should response the GET method /users/1', async () => {
@@ -28,20 +22,15 @@ describe('Express server', () => {
     expect(response.text).toBe('{"id":1,"name":"太郎","age":20}')
   })
 
-  it('should response the POST method /users ', (done: jest.DoneCallback) => {
+  it('should response the POST method /users ', async () => {
     const user = {
       category: 'Private',
       name: '太郎',
       done: false,
     }
-    supertest(app)
-      .post('/users')
-      .send(user)
-      .then((response) => {
-        expect(response.status).toBe(200)
-        expect(response.text).toBe('"user added"')
-        done()
-      })
+    const response = await supertest(app).post('/users').send(user)
+    expect(response.status).toBe(200)
+    expect(response.text).toBe('"user added"')
   })
 
   it('should response the PUT method /users/1 ', async () => {
