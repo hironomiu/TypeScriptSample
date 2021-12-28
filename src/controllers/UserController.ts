@@ -32,9 +32,9 @@ export class UserController {
   }
 
   @Post('/')
-  post(@Body() user: User) {
-    users = [...users, user]
-    const id = users.findIndex((data) => (data.name = user.name))
+  post(@Body() user: { name: string; age: number }) {
+    const id = Math.max(...users.map((user) => user.id)) + 1
+    users = [...users, { id: id, ...user }]
     return { message: 'success', id: id }
   }
 
