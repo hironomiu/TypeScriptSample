@@ -19,6 +19,7 @@ app.use(Express.json())
 
 useExpressServer(app, {
   controllers: [RootController, UserController],
+  validation: true,
 })
 
 export { app }
