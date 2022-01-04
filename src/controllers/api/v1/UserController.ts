@@ -23,7 +23,7 @@ class PostUser {
     this.name = '   '
     this.age = 0
   }
-  @MinLenght(2)
+  // @MinLength(2)
   name: string
 
   age: number
@@ -63,7 +63,4 @@ export class ApiV1UserController {
     users = [...newUsers]
     return { message: 'success', id: id }
   }
-}
-function MinLenght(arg0: number) {
-  throw new Error('Function not implemented.')
 }
