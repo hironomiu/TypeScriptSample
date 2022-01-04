@@ -13,6 +13,8 @@ $ npm -v
 7.19.1
 ```
 
+[REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)を利用するため[VSCode](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)を推奨
+
 ## Install Memo
 
 ### TypeScript
@@ -77,8 +79,6 @@ curl -H "Origin: http://localhost:4000" --head http://localhost:5050
 ```
 
 ---
-
-開発は[REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)などを利用するため[VSCode](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)を使用
 
 ## set up
 
