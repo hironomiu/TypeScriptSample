@@ -20,22 +20,21 @@ describe('Express server /users', () => {
 
   it('should response the POST method /users ', async () => {
     const user = {
-      name: 'Mike',
-      age: 33,
+      name: '二郎',
+      age: 20,
     }
     const response = await supertest(app).post('/api/v1/users').send(user)
     expect(response.status).toBe(200)
     expect(response.text).toBe('{"message":"success","id":2}')
   })
 
-  it('should response the POST method /users validation', async () => {
+  it('should response the POST method /users validation 400 error', async () => {
     const user = {
       name: 'Mike',
       age: 'aa',
     }
     const response = await supertest(app).post('/api/v1/users').send(user)
-    expect(response.status).toBe(200)
-    expect(response.text).toBe('{"message":"success","id":3}')
+    expect(response.status).toBe(400)
   })
 
   it('should response the PUT method /users/1 ', async () => {

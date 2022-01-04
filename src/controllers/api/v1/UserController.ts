@@ -8,6 +8,8 @@ import {
   Delete,
 } from 'routing-controllers'
 
+import { IsInt, MinLength } from 'class-validator'
+
 type User = { id: number; name: string; age: number }
 
 let users: Array<User> = [
@@ -23,9 +25,10 @@ class PostUser {
     this.name = '   '
     this.age = 0
   }
-  // @MinLength(2)
+  @MinLength(2)
   name: string
 
+  @IsInt()
   age: number
 }
 
@@ -43,7 +46,8 @@ export class ApiV1UserController {
   }
 
   @Post('/')
-  post(@Body() user: { name: string; age: number }) {
+  // post(@Body() user: { name: string; age: number }) {
+  post(@Body() user: PostUser) {
     console.log(user.age)
     const id = Math.max(...users.map((user) => user.id)) + 1
     users = [...users, { id: id, ...user }]

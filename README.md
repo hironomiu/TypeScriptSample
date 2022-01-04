@@ -6,8 +6,11 @@ TypeScript + Express
 npm install -D typescript @types/node ts-node
 ```
 
+[routing-controllers Installation](https://github.com/typestack/routing-controllers) を参照
+
 ```
 npm install express mysql2 routing-controllers cors
+npm install class-transformer class-validator
 npm install -D @types/express types/mysql2# @types/cors
 ```
 
