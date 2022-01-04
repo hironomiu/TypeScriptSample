@@ -1,10 +1,27 @@
 # TypeScript Sample
 
-TypeScript + Express
+TypeScript + Express + routing-controllers
+
+## 動作環境
+
+Node.js、npm がインストールされてること
+
+```
+$ node -v
+v16.2.0
+$ npm -v
+7.19.1
+```
+
+## Install Memo
+
+### TypeScript
 
 ```
 npm install -D typescript @types/node ts-node
 ```
+
+### App
 
 [routing-controllers Installation](https://github.com/typestack/routing-controllers) を参照
 
@@ -13,6 +30,8 @@ npm install express mysql2 routing-controllers cors
 npm install class-transformer class-validator
 npm install -D @types/express types/mysql2# @types/cors
 ```
+
+### dotenv
 
 ```
 npm install dotenv
@@ -25,41 +44,39 @@ PORT=5050
 ALLOWED_ORIGINS='http://localhost:3000 http://localhost:4000'
 ```
 
-JEST
+### JEST
 
 ```
 npm install -D jest ts-jest @types/jest supertest @types/supertest
 ```
 
-Tasting
+## Tasting
 
 `--coverage`でカバレッジを取得
 
-REST Client
-`./client/client.http`内で CMD + ALT + R で実行
+`./test`配下に記述
 
-curl(cors OK)
+## REST Client
+
+VSCode の[REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)を利用
+
+利用方法は`./client`配下内の各ファイルで CMD + ALT + R で実行
+
+## CORS
+
+curl での CORS の確認 OK(Access-Control-Allow-Origin が返る)
 
 ```
 curl -H "Origin: http://localhost:3000" --head http://localhost:5050
 ```
 
-curl(cors NG)
+curl での CORS の確認 NG(Access-Control-Allow-Origin が返らない)
 
 ```
 curl -H "Origin: http://localhost:4000" --head http://localhost:5050
 ```
 
-## 環境
-
-nodejs、npm がインストールされてること
-
-```
-$ node -v
-v12.14.1
-$ npm -v
-6.13.6
-```
+---
 
 開発は[REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)などを利用するため[VSCode](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)を使用
 
