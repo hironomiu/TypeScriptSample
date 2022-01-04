@@ -15,7 +15,7 @@ npm install -D @types/express types/mysql2# @types/cors
 npm install dotenv
 ```
 
-`.env`は`process.env.port`で利用(以下例)
+`.env`は`process.env.PORT`,`process.env.ALLOWED_ORIGINS`で利用(以下例)
 
 ```
 PORT=5050

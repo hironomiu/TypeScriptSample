@@ -3,7 +3,7 @@ import * as cors from 'cors'
 import 'reflect-metadata'
 import { useExpressServer } from 'routing-controllers'
 import { RootController } from './controllers/RootController'
-import { UserController } from './controllers/UserController'
+import { ApiV1UserController } from './controllers/api/v1/UserController'
 import * as dotenv from 'dotenv'
 
 dotenv.config()
@@ -18,7 +18,7 @@ app.use(cors(options))
 app.use(Express.json())
 
 useExpressServer(app, {
-  controllers: [RootController, UserController],
+  controllers: [RootController, ApiV1UserController],
   validation: true,
 })
 

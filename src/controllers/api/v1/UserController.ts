@@ -18,8 +18,19 @@ let users: Array<User> = [
   },
 ]
 
-@JsonController('/users')
-export class UserController {
+class PostUser {
+  constructor() {
+    this.name = '   '
+    this.age = 0
+  }
+  @MinLenght(2)
+  name: string
+
+  age: number
+}
+
+@JsonController('/api/v1/users')
+export class ApiV1UserController {
   @Get('/')
   getAll() {
     return { message: 'success', users }
@@ -33,6 +44,7 @@ export class UserController {
 
   @Post('/')
   post(@Body() user: { name: string; age: number }) {
+    console.log(user.age)
     const id = Math.max(...users.map((user) => user.id)) + 1
     users = [...users, { id: id, ...user }]
     return { message: 'success', id: id }
@@ -51,4 +63,7 @@ export class UserController {
     users = [...newUsers]
     return { message: 'success', id: id }
   }
+}
+function MinLenght(arg0: number) {
+  throw new Error('Function not implemented.')
 }
