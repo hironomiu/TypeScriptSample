@@ -92,9 +92,9 @@ curl での CORS の確認 NG(Access-Control-Allow-Origin が返らない)
 curl -H "Origin: http://localhost:4000" --head http://localhost:5050
 ```
 
-## curl POST
+## Validation Check
 
-validation error
+age が POST パラメータに存在しないため validation error(isNotEmpty,isInt)
 
 ```
 curl -X POST -H  "Content-Type: application/json" -d '{"name":"John"}' localhost:5050/api/v1/users
