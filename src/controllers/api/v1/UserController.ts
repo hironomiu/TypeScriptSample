@@ -8,7 +8,7 @@ import {
   Delete,
 } from 'routing-controllers'
 
-import { IsInt, MinLength } from 'class-validator'
+import { IsInt, MinLength, IsNotEmpty } from 'class-validator'
 
 type User = { id: number; name: string; age: number }
 
@@ -21,15 +21,13 @@ let users: Array<User> = [
 ]
 
 class PostUser {
-  constructor() {
-    this.name = '   '
-    this.age = 0
-  }
-  @MinLength(2)
-  name: string
+  @MinLength(1)
+  @IsNotEmpty()
+  name!: string
 
-  @IsInt()
-  age: number
+  @IsInt({ message: '数値項目です' })
+  @IsNotEmpty({ message: '必須項目です' })
+  age!: number
 }
 
 @JsonController('/api/v1/users')
@@ -46,11 +44,12 @@ export class ApiV1UserController {
   }
 
   @Post('/')
-  // post(@Body() user: { name: string; age: number }) {
   post(@Body() user: PostUser) {
     console.log(user.age)
     const id = Math.max(...users.map((user) => user.id)) + 1
-    users = [...users, { id: id, ...user }]
+    if (user.name && user.age) {
+      users = [...users, { id: id, ...user }]
+    }
     return { message: 'success', id: id }
   }
 

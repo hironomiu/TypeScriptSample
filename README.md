@@ -27,6 +27,17 @@ or
 make setup
 ```
 
+## .env
+
+`.env`には Express 起動 PORT`process.env.PORT`,CORS 許可オリジン`process.env.ALLOWED_ORIGINS`を設定
+
+### Example
+
+```
+PORT=5050
+ALLOWED_ORIGINS='http://localhost:3000 http://localhost:4000'
+```
+
 ## Serve
 
 ```
@@ -67,6 +78,28 @@ VSCode の拡張機能[REST Client](https://marketplace.visualstudio.com/items?i
 
 利用方法は`./client`配下内の各ファイルで CMD + ALT + R で実行
 
+## CORS
+
+curl での CORS の確認 OK(Access-Control-Allow-Origin が返る)
+
+```
+curl -H "Origin: http://localhost:3000" --head http://localhost:5050
+```
+
+curl での CORS の確認 NG(Access-Control-Allow-Origin が返らない)
+
+```
+curl -H "Origin: http://localhost:4000" --head http://localhost:5050
+```
+
+## curl POST
+
+validation error
+
+```
+curl -X POST -H  "Content-Type: application/json" -d '{"name":"John"}' localhost:5050/api/v1/users
+```
+
 ## Install Memo
 
 ### TypeScript
@@ -90,29 +123,8 @@ npm install -D @types/express types/mysql2# @types/cors
 npm install dotenv
 ```
 
-`.env`は`process.env.PORT`,`process.env.ALLOWED_ORIGINS`で利用(以下例)
-
-```
-PORT=5050
-ALLOWED_ORIGINS='http://localhost:3000 http://localhost:4000'
-```
-
 ### JEST
 
 ```
 npm install -D jest ts-jest @types/jest supertest @types/supertest
-```
-
-## CORS
-
-curl での CORS の確認 OK(Access-Control-Allow-Origin が返る)
-
-```
-curl -H "Origin: http://localhost:3000" --head http://localhost:5050
-```
-
-curl での CORS の確認 NG(Access-Control-Allow-Origin が返らない)
-
-```
-curl -H "Origin: http://localhost:4000" --head http://localhost:5050
 ```
