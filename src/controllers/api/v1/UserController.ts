@@ -8,7 +8,7 @@ import {
   Delete,
 } from 'routing-controllers'
 
-import { IsInt, MinLength, IsNotEmpty, Length } from 'class-validator'
+import { IsInt, IsNotEmpty, Length } from 'class-validator'
 
 type User = { id: number; name: string; age: number }
 
