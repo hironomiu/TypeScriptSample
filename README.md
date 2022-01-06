@@ -94,6 +94,12 @@ curl -H "Origin: http://localhost:4000" --head http://localhost:5050
 
 ## Validation Check
 
+name が 20 文字以上のため validation erro(length)
+
+```
+curl -X POST -H  "Content-Type: application/json" -d '{"name":"123456789012345678901","age":20}' localhost:5050/api/v1/users
+```
+
 age が POST パラメータに存在しないため validation error(isNotEmpty,isInt)
 
 ```

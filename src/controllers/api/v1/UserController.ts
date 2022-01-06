@@ -8,7 +8,7 @@ import {
   Delete,
 } from 'routing-controllers'
 
-import { IsInt, MinLength, IsNotEmpty } from 'class-validator'
+import { IsInt, MinLength, IsNotEmpty, Length } from 'class-validator'
 
 type User = { id: number; name: string; age: number }
 
@@ -20,11 +20,23 @@ let users: Array<User> = [
   },
 ]
 
+// class-validatorの仕様上コンストラクターの宣言ができない＆宣言できてもデフォルト値を設定することでJSON中にカラムが存在しないケースのバリデーションができないためassertion modifier(!)で対応する
 class PostUser {
-  @MinLength(1)
-  @IsNotEmpty()
+  @Length(1, 20, { message: '1文字以上、20文字以下です' })
+  @IsNotEmpty({ message: '必須項目です' })
   name!: string
 
+  @IsInt({ message: '数値項目です' })
+  @IsNotEmpty({ message: '必須項目です' })
+  age!: number
+}
+
+// class-validatorの仕様上コンストラクターの宣言ができない＆宣言できてもデフォルト値を設定することでJSON中にカラムが存在しないケースのバリデーションができないためassertion modifier(!)で対応する
+class PutUser {
+  @IsInt({ message: '数値項目です' })
+  @IsNotEmpty({ message: '必須項目です' })
+  id!: number
+  name!: string
   @IsInt({ message: '数値項目です' })
   @IsNotEmpty({ message: '必須項目です' })
   age!: number
@@ -45,7 +57,6 @@ export class ApiV1UserController {
 
   @Post('/')
   post(@Body() user: PostUser) {
-    console.log(user.age)
     const id = Math.max(...users.map((user) => user.id)) + 1
     if (user.name && user.age) {
       users = [...users, { id: id, ...user }]
@@ -54,7 +65,7 @@ export class ApiV1UserController {
   }
 
   @Put('/:id')
-  put(@Param('id') id: number, @Body() user: User) {
+  put(@Param('id') id: number, @Body() user: PutUser) {
     const newUsers: Array<User> = users.filter((user) => user.id !== id)
     users = [...newUsers, user]
     return { message: 'success', user: user }
