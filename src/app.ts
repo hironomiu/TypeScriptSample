@@ -13,7 +13,10 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(' ') || [
 ]
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
+  credentials: true,
+  optionsSuccessStatus: 200,
 }
+
 app.use(cors(options))
 app.use(Express.json())
 
