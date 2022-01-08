@@ -6,7 +6,7 @@ describe('Express server GET /users', () => {
     const response = await supertest(app).get('/api/v1/users')
     expect(response.status).toBe(200)
     expect(response.text).toBe(
-      '{"message":"success","users":[{"id":1,"name":"太郎","age":20}]}'
+      '{"message":"success","users":[{"id":1,"name":"太郎","email":"taro@example.com","age":20}]}'
     )
   })
 })
@@ -16,7 +16,7 @@ describe('Express server GET /users/:id', () => {
     const response = await supertest(app).get('/api/v1/users/1')
     expect(response.status).toBe(200)
     expect(response.text).toBe(
-      '{"message":"success","user":{"id":1,"name":"太郎","age":20}}'
+      '{"message":"success","user":{"id":1,"name":"太郎","email":"taro@example.com","age":20}}'
     )
   })
 })
@@ -25,6 +25,7 @@ describe('Express server POST /users/', () => {
   it('should response the POST method /users ', async () => {
     const user = {
       name: '二郎',
+      email: 'jiro@example.com',
       age: 20,
     }
     const response = await supertest(app).post('/api/v1/users').send(user)
@@ -35,6 +36,7 @@ describe('Express server POST /users/', () => {
   it('should response the POST method /users name length 1', async () => {
     const user = {
       name: '二',
+      email: 'jiro@example.com',
       age: 20,
     }
     const response = await supertest(app).post('/api/v1/users').send(user)
@@ -45,6 +47,7 @@ describe('Express server POST /users/', () => {
   it('should response the POST method /users name length 20', async () => {
     const user = {
       name: '１２３４５６７８９０１２３４５６７８９０',
+      email: 'jiro@example.com',
       age: 20,
     }
     const response = await supertest(app).post('/api/v1/users').send(user)
@@ -55,6 +58,7 @@ describe('Express server POST /users/', () => {
   it('should response the POST method /users validation error. responsed status code 400. age string', async () => {
     const user = {
       name: 'Mike',
+      email: 'jiro@example.com',
       age: 'aa',
     }
     const response = await supertest(app).post('/api/v1/users').send(user)
@@ -85,12 +89,13 @@ describe('Express server PUT /users/:id', () => {
     const user = {
       id: 1,
       name: '花子',
+      email: 'hanako@example.com',
       age: 25,
     }
     const response = await supertest(app).put('/api/v1/users/1').send(user)
     expect(response.status).toBe(200)
     expect(response.text).toBe(
-      '{"message":"success","user":{"id":1,"name":"花子","age":25}}'
+      '{"message":"success","user":{"id":1,"name":"花子","email":"hanako@example.com","age":25}}'
     )
   })
 
@@ -98,6 +103,7 @@ describe('Express server PUT /users/:id', () => {
     const user = {
       id: 'a',
       name: '花子',
+      email: 'hanako@example.com',
       age: 25,
     }
     const response = await supertest(app).put('/api/v1/users/1').send(user)

@@ -8,7 +8,7 @@ import {
   Delete,
 } from 'routing-controllers'
 
-import { IsInt, IsNotEmpty, Length } from 'class-validator'
+import { IsInt, IsNotEmpty, Length, IsEmail } from 'class-validator'
 
 type User = { id: number; name: string; email: string; age: number }
 
@@ -27,6 +27,9 @@ class PostUser {
   @IsNotEmpty({ message: '必須項目です' })
   name!: string
 
+  @IsEmail()
+  email!: string
+
   @IsInt({ message: '数値項目です' })
   @IsNotEmpty({ message: '必須項目です' })
   age!: number
@@ -37,7 +40,14 @@ class PutUser {
   @IsInt({ message: '数値項目です' })
   @IsNotEmpty({ message: '必須項目です' })
   id!: number
+
+  @Length(1, 20, { message: '1文字以上、20文字以下です' })
+  @IsNotEmpty({ message: '必須項目です' })
   name!: string
+
+  @IsEmail()
+  email!: string
+
   @IsInt({ message: '数値項目です' })
   @IsNotEmpty({ message: '必須項目です' })
   age!: number
