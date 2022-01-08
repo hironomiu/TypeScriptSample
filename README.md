@@ -1,6 +1,6 @@
 # TypeScript Sample
 
-TypeScript + Express + routing-controllers
+TypeScript + Express + routing-controllers + mysql2
 
 ## 動作環境
 
@@ -29,13 +29,18 @@ make setup
 
 ## .env
 
-`.env`には Express 起動 PORT`process.env.PORT`,CORS 許可オリジン`process.env.ALLOWED_ORIGINS`を設定
+`.env`には Express 起動 PORT`process.env.PORT`,CORS 許可オリジン`process.env.ALLOWED_ORIGINS`,DB 周りを設定
 
 ### Example
 
 ```
 PORT=5050
 ALLOWED_ORIGINS='http://localhost:3000 http://localhost:4000'
+DB_HOST='127.0.0.1'
+DB_USERNAME='root'
+DB_PASSWORD='mysql'
+DB_NAME='test'
+DB_PORT=3306
 ```
 
 ## Serve
