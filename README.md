@@ -27,6 +27,30 @@ or
 make setup
 ```
 
+## Database
+
+MySQL に DB を作成し`.env`に設定
+
+users を作成
+
+```
+drop table users;
+create table users(
+    id int not null auto_increment,
+    name varchar(20) not null,
+    age int not null,
+    created_at datetime default (current_timestamp),
+    updated_at datetime default (current_timestamp),
+    primary key(id)
+);
+```
+
+ダミーデータ
+
+```
+insert into users(name,age) values('太郎',20);
+```
+
 ## .env
 
 `.env`には Express 起動 PORT`process.env.PORT`,CORS 許可オリジン`process.env.ALLOWED_ORIGINS`,DB 周りを設定
