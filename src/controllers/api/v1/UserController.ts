@@ -10,12 +10,13 @@ import {
 
 import { IsInt, IsNotEmpty, Length } from 'class-validator'
 
-type User = { id: number; name: string; age: number }
+type User = { id: number; name: string; email: string; age: number }
 
 let users: Array<User> = [
   {
     id: 1,
     name: '太郎',
+    email: 'taro@example.com',
     age: 20,
   },
 ]
