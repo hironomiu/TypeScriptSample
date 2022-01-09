@@ -3,5 +3,6 @@ content-type: application/json
 
 {
     "name":"二郎",
+    "email":"jiro@example.com",
     "age":20
 }

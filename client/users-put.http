@@ -4,5 +4,6 @@ content-type: application/json
 {
     "id":1,
     "name":"二郎",
+    "email":"jiro@example.com",
     "age":40
 }
