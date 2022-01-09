@@ -4,6 +4,7 @@ import 'reflect-metadata'
 import { useExpressServer } from 'routing-controllers'
 import { RootController } from './controllers/RootController'
 import { ApiV1UserController } from './controllers/api/v1/UserController'
+import { ApiV1TaskController } from './controllers/api/v1/TaskController'
 import * as dotenv from 'dotenv'
 
 dotenv.config()
@@ -21,7 +22,7 @@ app.use(cors(options))
 app.use(Express.json())
 
 useExpressServer(app, {
-  controllers: [RootController, ApiV1UserController],
+  controllers: [RootController, ApiV1UserController, ApiV1TaskController],
   validation: true,
 })
 
